@@ -1119,7 +1119,7 @@ echo '<input type="hidden" name="charset">
 <tr>
 <td><span class="header_vars">User:</span></td>
 <td><span class="header_values" id="header_userid">'. $uid . ' [ ' . $user . ' ] </span><span class="header_vars"> Group: </span><span class="header_values" id="header_groupid">' . $gid . ' [ ' . $group . ' ]</span> </td>
-<td width="12%" rowspan="8"><img style="border-radius:100px;" width="200" height="160" alt="Wukong_Exploit" draggable="false" src="https://h3x4r00t.co.za/assets/shell/godseye.webp" /></td>
+<td width="12%" rowspan="8"><img style="border-radius:100px;" width="200" height="180" alt="Wukong_Exploit" draggable="false" src="https://h3x4r00t.co.za/assets/shell/godseye.webp" /></td>
 </tr>
 <tr>
 <td><span class="header_vars">PHP:</span></td>
